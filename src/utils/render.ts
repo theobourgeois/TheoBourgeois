@@ -67,7 +67,7 @@ export function renderCanvas1(
   }
 }
 
-const letters = "é♪π♫￥ƒ➫☮é♪π♫￥ƒ➫é♪π♫￥ƒ➫Ⓣ✎☻⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧∀⁺π♫♫♫";
+const letters = "é♪π♫￥ƒ➫é♪ππ♫￥ƒ➫é♪π♫￥ƒ➫Ⓣ✎☻⁺‧₊˚ ཐི⋆♱⋆ཋྀ ˚₊‧∀⁺π♫♫♫";
 const LETTER_SIZE = 20;
 
 let letterList: string[][] = [];

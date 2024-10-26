@@ -20,6 +20,7 @@ import {
     FaTwitter,
     FaYoutube,
 } from "react-icons/fa";
+import { useWindowDimensions } from "./utils/custom-hooks";
 
 const colorThemes = {
     fade: [
@@ -58,6 +59,8 @@ function App() {
     const canvas1Ref = useRef<HTMLCanvasElement>(null);
     const canvas2Ref = useRef<HTMLCanvasElement>(null);
     const canvas3Ref = useRef<HTMLCanvasElement>(null);
+
+    const dimensions = useWindowDimensions();
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -175,9 +178,9 @@ function App() {
                 background: `linear-gradient(
               to bottom,
               rgb(2 6 23) 95%,
-              rgb(${colorThemes[colorTheme][0].join(",")}),
-              rgb(${colorThemes[colorTheme][1].join(",")}),
-              rgb(${colorThemes[colorTheme][2].join(",")})
+              rgba(${colorThemes[colorTheme][0].join(",")}, 0.4),
+              rgba(${colorThemes[colorTheme][1].join(",")}, 0.4),
+              rgba(${colorThemes[colorTheme][2].join(",")}, 0.4)
               )`,
             }}
         >
@@ -198,7 +201,9 @@ function App() {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 transition={{ duration: 0.5 }}
                 style={{
-                    top: window.innerHeight * 2 - 200,
+                    top:
+                        window.innerHeight * 2 -
+                        (dimensions.width < 600 ? 350 : 200),
                 }}
                 className="absolute w-full"
                 ref={canvas3Ref}
@@ -226,7 +231,7 @@ function App() {
                     </nav>
                 </div>
                 <RiColorFilterLine
-                    className="text-white text-4xl cursor-pointer rounded-md mx-2"
+                    className="text-white text-4xl cursor-pointer rounded-md mx-2 absolute top-2 right-0"
                     style={{
                         background: `linear-gradient(
                       to right,
@@ -288,11 +293,11 @@ function App() {
                     className="rounded-md relative z-20 h-screen flex items-center"
                     id="about"
                 >
-                    <div className="p-8 bg-slate-950/40 rounded-full drop-shadow-2xl space-y-2">
+                    <div className="p-8 drop-shadow-2xl space-y-2">
                         <h2 className="text-slate-200 text-7xl text-center drop-shadow-lg font-bold">
                             About me
                         </h2>
-                        <h3 className="text-slate-200 text-3xl text-center drop-shadow-lg">
+                        <h3 className="text-slate-200 text-[5vw] md:text-3xl text-center drop-shadow-lg ">
                             I love making creative and innovative projects. I'm
                             passionate about learning new technologies and
                             building cool stuff. I'm currently a student at
@@ -303,7 +308,14 @@ function App() {
                     </div>
                 </motion.section>
 
-                <div id="projects" className="h-[calc(100vh-400px)]"></div>
+                <div
+                    id="projects"
+                    style={{
+                        height:
+                            window.innerHeight -
+                            (dimensions.width < 600 ? 750 : 400),
+                    }}
+                ></div>
 
                 <motion.section
                     className="flex flex-col gap-4"

@@ -131,7 +131,7 @@ export const renderCodeCanvas = (
 
 
     const imageDataValue = imageArray[i];
-    const isMatrix = Math.abs(rows[currentColumn]) > currentLine;
+    const isMatrix = width > 800 && Math.abs(rows[currentColumn]) > currentLine;
     const alpha = Math.min(0.9 * currentLine / numOfLines, 0.2)
     const color = `rgba(${r}, ${g}, ${b}, ${imageDataValue ? 1 : alpha})`;
     if (imageDataValue || isMatrix) {
