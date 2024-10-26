@@ -188,7 +188,7 @@ export const experience: Record<
             "figma",
         ],
         bulletPoints: [
-            `Developed a complete front-end for a client-facing product using <a href="${technologyLinks.react}">React</a>, <a href="${technologyLinks.ts}">TypeScript</a>, and <a href="${technologyLinks.gql}">GraphQL</a>, enabling a <em>functional</em> and <strong>responsive interface</strong> in a short time.`,
+            `Developed a complete front-end for a state of the art fish counting product using <a href="${technologyLinks.react}">React</a>, <a href="${technologyLinks.ts}">TypeScript</a>, and <a href="${technologyLinks.gql}">GraphQL</a>, enabling a <em>functional</em> and <strong>responsive interface</strong> in a short time.`,
             `Implemented and tested backend features with <a href="${technologyLinks.spring}">Java Spring Boot</a> and <a href="${technologyLinks.postgresql}">PostgreSQL</a>, ensuring <strong>high reliability</strong> with thorough unit and integration testing.`,
             `Built a <a href="${technologyLinks.kafka}">Kafka</a> consumer in <a href="${technologyLinks.nodejs}">Node.js</a> using <a href="${technologyLinks.docker}">Docker</a> to route trajectory data to the backend, enabling <em>customized product testing</em>.`,
         ],

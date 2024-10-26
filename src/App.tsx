@@ -20,7 +20,7 @@ import {
     FaTwitter,
     FaYoutube,
 } from "react-icons/fa";
-import { useWindowDimensions } from "./utils/custom-hooks";
+import renderCanvas, { useWindowDimensions } from "./utils/custom-hooks";
 
 const colorThemes = {
     fade: [
@@ -61,6 +61,7 @@ function App() {
     const canvas3Ref = useRef<HTMLCanvasElement>(null);
 
     const dimensions = useWindowDimensions();
+    const isMobile = dimensions.width < 600;
 
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -73,102 +74,50 @@ function App() {
         });
     };
 
-    // render canvas 1
-    useEffect(() => {
-        const canvas = canvas1Ref.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-        const container = containerRef.current;
-        if (!container) return;
+    // Render Canvas1
+    renderCanvas(
+        canvas1Ref,
+        (ctx, width, height) => {
+            renderCanvas1(ctx, width, height, colorThemes[colorTheme]);
+        },
+        dimensions.width,
+        dimensions.height,
+        [colorTheme, isMobile, dimensions],
+        isMobile ? 100000 : 10
+    );
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    // Render Canvas2
+    renderCanvas(
+        canvas2Ref,
+        (ctx, width, height) => {
+            renderCanvas2(ctx, width, height, colorThemes[colorTheme]);
+        },
+        dimensions.width,
+        dimensions.height,
+        [colorTheme, isMobile, dimensions],
+        400
+    );
 
-        const interval = setInterval(() => {
-            renderCanvas1(
-                ctx,
-                canvas.width,
-                canvas.height,
-                colorThemes[colorTheme]
-            );
-        }, 10);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [colorTheme]);
-
-    // render canvas 2
-    useEffect(() => {
-        const canvas = canvas2Ref.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-        const container = containerRef.current;
-        if (!container) return;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const interval = setInterval(() => {
-            renderCanvas2(
-                ctx,
-                canvas.width,
-                canvas.height,
-                colorThemes[colorTheme]
-            );
-        }, 200);
-
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [colorTheme]);
-
-    useEffect(() => {
-        const canvas = canvas3Ref.current;
-        if (!canvas) return;
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-        const container = containerRef.current;
-        if (!container) return;
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const render = () => {
-            const fontSize = window.innerWidth / 100;
+    // Render Canvas3
+    renderCanvas(
+        canvas3Ref,
+        (ctx, width, height) => {
+            const fontSize = dimensions.width / 100;
             renderCodeCanvas(
                 ctx,
                 fontSize,
                 Font.Monaco,
                 "My Projects",
-                canvas.width,
-                canvas.height,
+                width,
+                height,
                 colorThemes[colorTheme]
             );
-        };
-        render();
-
-        const interval = setInterval(() => {
-            render();
-        }, 100);
-
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            render();
-        });
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [colorTheme]);
+        },
+        dimensions.width,
+        dimensions.height,
+        [colorTheme, dimensions, isMobile],
+        isMobile ? 10000 : 200
+    );
 
     return (
         <div
@@ -178,8 +127,6 @@ function App() {
                 background: `linear-gradient(
               to bottom,
               rgb(2 6 23) 95%,
-              rgba(${colorThemes[colorTheme][0].join(",")}, 0.4),
-              rgba(${colorThemes[colorTheme][1].join(",")}, 0.4),
               rgba(${colorThemes[colorTheme][2].join(",")}, 0.4)
               )`,
             }}
@@ -204,18 +151,19 @@ function App() {
                     top:
                         window.innerHeight * 2 -
                         (dimensions.width < 600 ? 350 : 200),
+                    display: isMobile ? "none" : "block",
                 }}
                 className="absolute w-full"
                 ref={canvas3Ref}
             ></motion.canvas>
-            <header className="relative z-20 p-4 flex justify-between">
+            <header className="relative z-20 p-4 flex justify-between h-44">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-white text-7xl font-semibold">
                         <a className="hover:no-underline" href="/">
                             Théo Bourgeois
                         </a>
                     </h1>
-                    <nav className="flex items-center space-x-4">
+                    <nav className="flex items-center space-x-2 md:space-x-4 font-medium">
                         <a href="#about" className="text-white">
                             About me
                         </a>
@@ -248,9 +196,9 @@ function App() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="rounded-md flex flex-col relative z-20 gap-4 h-[calc(100vh-175px)] mt-8 justify-center"
+                    className="rounded-md flex flex-col relative z-20 gap-4 justify-center h-[calc(100vh-176px)]"
                 >
-                    <div className=" w-max">
+                    <div className="w-max">
                         <motion.div
                             className="inset-0 w-48 h-48 rounded-full bg-gradient-to-r p-8 flex justify-center items-center"
                             style={{
@@ -273,8 +221,10 @@ function App() {
                         </motion.div>
                     </div>
                     <div>
-                        <h2 className="text-slate-200 text-3xl  drop-shadow-lg">
-                            <b className="text-6xl">Hi, my name is Théo!</b>
+                        <h2 className="text-slate-200 text-2xl md:text-3xl drop-shadow-lg">
+                            <b className="text-[44px] md:text-6xl">
+                                Hi, my name is Théo!
+                            </b>
                             <br></br> I'm a <b>Software Engineer</b> based in{" "}
                             <b>Halifax Nova Scotia, Canada</b>.
                         </h2>
@@ -308,21 +258,54 @@ function App() {
                     </div>
                 </motion.section>
 
-                <div
-                    id="projects"
-                    style={{
-                        height:
-                            window.innerHeight -
-                            (dimensions.width < 600 ? 750 : 400),
-                    }}
-                ></div>
+                {!isMobile && (
+                    <div
+                        id="projects"
+                        style={{
+                            height:
+                                window.innerHeight -
+                                (dimensions.width < 600 ? 750 : 400),
+                        }}
+                    ></div>
+                )}
 
                 <motion.section
+                    id={isMobile ? "projects" : ""}
                     className="flex flex-col gap-4"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
+                    {isMobile && (
+                        <h2
+                            className="text-7xl text-center h-44 flex w-full items-center justify-center font-bold"
+                            style={{
+                                background: `linear-gradient(
+                            to right,
+                            rgb(${colorThemes[colorTheme][0].join(",")}),
+                            rgb(${colorThemes[colorTheme][1].join(",")}),
+                            rgb(${colorThemes[colorTheme][2].join(",")})
+                        )`,
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                padding: "0 1rem",
+                                overflow: "visible",
+                                textShadow: `0 0 10px rgba(${colorThemes[
+                                    colorTheme
+                                ][0].join(",")}, 0.7), 
+                                             0 0 10px rgba(${colorThemes[
+                                                 colorTheme
+                                             ][1].join(",")}, 1), 
+                                             0 0 10px rgba(${colorThemes[
+                                                 colorTheme
+                                             ][2].join(",")}, 1),
+                                             0 0 10px rgba(0, 0, 0, 1)`,
+                                fontFamily: Font.Monaco,
+                            }}
+                        >
+                            MY PROJECTS
+                        </h2>
+                    )}
                     {Object.values(projects).map((project, index) => (
                         <motion.div
                             viewport={{ once: true }}
@@ -420,7 +403,7 @@ function App() {
                     transition={{ duration: 1 }}
                     className="rounded-md relative z-20 flex flex-col gap-4"
                 >
-                    <h2 className="text-slate-200 text-9xl font-semibold text-center">
+                    <h2 className="text-slate-200 font-bold text-center text-[13vw] md:text-9xl drop-shadow-lg">
                         Experience
                     </h2>
                     {Object.values(experience).map((job) => (
@@ -430,7 +413,7 @@ function App() {
                             whileInView={{ opacity: 1, x: 0, y: 0 }}
                             className="space-y-4 mb-12"
                         >
-                            <div className="flex gap-2 items-center">
+                            <div className="flex gap-2 items-center flex-wrap">
                                 <img
                                     className="w-24"
                                     src={job.logo}
@@ -440,7 +423,7 @@ function App() {
                                     <a href={job.website}>{job.company}</a>
                                 </h3>
                             </div>
-                            <h4 className="text-slate-200 text-4xl font-semibold italic">
+                            <h4 className="text-slate-200 text-2xl md:text-4xl font-medium italic">
                                 {job.position}
                             </h4>
                             <h4 className="text-slate-200 text-2xl">
