@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { motion } from "framer-motion";
 import { renderCanvas1, renderCanvas2 } from "./utils/render";
