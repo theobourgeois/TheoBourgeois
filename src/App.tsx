@@ -95,7 +95,7 @@ function App() {
         dimensions.width,
         dimensions.height,
         [colorTheme, isMobile, dimensions],
-        400
+        200
     );
 
     // Render Canvas3
@@ -135,27 +135,7 @@ function App() {
                 className="absolute top-0 left-0 z-0 grayscale-[20%] w-full h-full"
                 ref={canvas1Ref}
             ></canvas>
-            <canvas
-                style={{
-                    top: window.innerHeight,
-                }}
-                className="absolute w-full "
-                ref={canvas2Ref}
-            ></canvas>
-            <motion.canvas
-                viewport={{ once: true }}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.5 }}
-                style={{
-                    top:
-                        window.innerHeight * 2 -
-                        (dimensions.width < 600 ? 350 : 200),
-                    display: isMobile ? "none" : "block",
-                }}
-                className="absolute w-full"
-                ref={canvas3Ref}
-            ></motion.canvas>
+
             <header className="relative z-20 p-4 flex justify-between h-44">
                 <div className="flex flex-col gap-2">
                     <h1 className="text-white text-7xl font-semibold">
@@ -215,7 +195,7 @@ function App() {
                         >
                             <img
                                 src="/profile.png"
-                                className="absolute rounded-full w-44 h-44 object-cover"
+                                className="absolute rounded-full w-44 h-44 object-cover select-none"
                                 alt="Profile picture"
                             />
                         </motion.div>
@@ -243,6 +223,13 @@ function App() {
                     className="rounded-md relative z-20 h-screen flex items-center"
                     id="about"
                 >
+                    <canvas
+                        style={{
+                            left: "-16.5%",
+                        }}
+                        className="absolute w-screen"
+                        ref={canvas2Ref}
+                    ></canvas>
                     <div className="p-8 drop-shadow-2xl space-y-2">
                         <h2 className="text-slate-200 text-7xl text-center drop-shadow-lg font-bold">
                             About me
@@ -258,52 +245,115 @@ function App() {
                     </div>
                 </motion.section>
 
-                {!isMobile && (
-                    <div
-                        id="projects"
-                        style={{
-                            height:
-                                window.innerHeight -
-                                (dimensions.width < 600 ? 750 : 400),
-                        }}
-                    ></div>
-                )}
+                <motion.section
+                    id="experience"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ duration: 1 }}
+                    className="rounded-md relative z-20 flex flex-col gap-4 py-12"
+                >
+                    <h2 className="text-slate-200 font-bold text-center text-[13vw] md:text-9xl drop-shadow-lg">
+                        Experience
+                    </h2>
+                    {Object.values(experience).map((job) => (
+                        <motion.div
+                            key={job.company}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, x: 0, y: 0 }}
+                            className="space-y-4 mb-12"
+                        >
+                            <div className="flex gap-2 items-center flex-wrap">
+                                <img
+                                    className="w-24"
+                                    src={job.logo}
+                                    alt={job.company}
+                                ></img>
+                                <h3 className="text-slate-200 text-5xl font-semibold">
+                                    <a href={job.website}>{job.company}</a>
+                                </h3>
+                            </div>
+                            <h4 className="text-slate-200 text-2xl md:text-4xl font-medium italic">
+                                {job.position}
+                            </h4>
+                            <h4 className="text-slate-200 text-2xl">
+                                {job.startDate} - {job.endDate ?? "Present"}
+                            </h4>
+
+                            <ul className="flex gap-2 items-center">
+                                {job.technologies?.map((technology) => (
+                                    <li
+                                        key={technology}
+                                        className="text-3xl cursor-pointer"
+                                        title={technology}
+                                    >
+                                        <a href={technologyLinks[technology]}>
+                                            {technologyIcons[technology]}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                            <ul className="text-slate-200 text-2xl drop-shadow-lg space-y-2">
+                                {job.bulletPoints.map((bullet) => (
+                                    <li key={bullet?.toLocaleString()}>
+                                        {"• "}
+                                        {bullet}
+                                    </li>
+                                ))}
+                            </ul>
+                        </motion.div>
+                    ))}
+                </motion.section>
 
                 <motion.section
                     id={isMobile ? "projects" : ""}
-                    className="flex flex-col gap-4"
+                    className="flex flex-col gap-4 relative"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
+                    <motion.canvas
+                        viewport={{ once: true }}
+                        initial={{ opacity: 0, y: 100 }}
+                        whileInView={{ opacity: 1, x: 0, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        style={{
+                            display: isMobile ? "none" : "block",
+                            left: "-17%",
+                            top: "-5%",
+                        }}
+                        className="absolute w-screen"
+                        ref={canvas3Ref}
+                    ></motion.canvas>
+                    {!isMobile && (
+                        <div
+                            id="projects"
+                            style={{
+                                height:
+                                    window.innerHeight -
+                                    (dimensions.width < 600 ? 750 : 400),
+                            }}
+                        ></div>
+                    )}
                     {isMobile && (
                         <h2
                             className="text-7xl text-center h-44 flex w-full items-center justify-center font-bold"
                             style={{
                                 background: `linear-gradient(
-                            to right,
-                            rgb(${colorThemes[colorTheme][0].join(",")}),
-                            rgb(${colorThemes[colorTheme][1].join(",")}),
-                            rgb(${colorThemes[colorTheme][2].join(",")})
-                        )`,
+                                to right,
+                                rgb(${colorThemes[colorTheme][0].join(",")}),
+                                rgb(${colorThemes[colorTheme][1].join(",")}),
+                                rgb(${colorThemes[colorTheme][2].join(",")})
+                                )`,
                                 WebkitBackgroundClip: "text",
                                 WebkitTextFillColor: "transparent",
                                 padding: "0 1rem",
                                 overflow: "visible",
-                                textShadow: `0 0 10px rgba(${colorThemes[
+                                filter: `drop-shadow(0 0 5px rgba(${colorThemes[
                                     colorTheme
-                                ][0].join(",")}, 0.7), 
-                                             0 0 10px rgba(${colorThemes[
-                                                 colorTheme
-                                             ][1].join(",")}, 1), 
-                                             0 0 10px rgba(${colorThemes[
-                                                 colorTheme
-                                             ][2].join(",")}, 1),
-                                             0 0 10px rgba(0, 0, 0, 1)`,
-                                fontFamily: Font.Monaco,
+                                ][0].join(",")})`,
                             }}
                         >
-                            MY PROJECTS
+                            My Projects
                         </h2>
                     )}
                     {Object.values(projects).map((project, index) => (
@@ -374,12 +424,10 @@ function App() {
 
                             <ul className="text-slate-200 text-2xl drop-shadow-lg space-y-2">
                                 {project.bulletPoints.map((bullet) => (
-                                    <li
-                                        dangerouslySetInnerHTML={{
-                                            __html: "• " + bullet,
-                                        }}
-                                        key={bullet}
-                                    ></li>
+                                    <li key={bullet?.toLocaleString()}>
+                                        {"• "}
+                                        {bullet}
+                                    </li>
                                 ))}
                             </ul>
 
@@ -396,70 +444,10 @@ function App() {
                         </motion.div>
                     ))}
                 </motion.section>
-                <motion.section
-                    id="experience"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, x: 0, y: 0 }}
-                    transition={{ duration: 1 }}
-                    className="rounded-md relative z-20 flex flex-col gap-4"
-                >
-                    <h2 className="text-slate-200 font-bold text-center text-[13vw] md:text-9xl drop-shadow-lg">
-                        Experience
-                    </h2>
-                    {Object.values(experience).map((job) => (
-                        <motion.div
-                            key={job.company}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, x: 0, y: 0 }}
-                            className="space-y-4 mb-12"
-                        >
-                            <div className="flex gap-2 items-center flex-wrap">
-                                <img
-                                    className="w-24"
-                                    src={job.logo}
-                                    alt={job.company}
-                                ></img>
-                                <h3 className="text-slate-200 text-5xl font-semibold">
-                                    <a href={job.website}>{job.company}</a>
-                                </h3>
-                            </div>
-                            <h4 className="text-slate-200 text-2xl md:text-4xl font-medium italic">
-                                {job.position}
-                            </h4>
-                            <h4 className="text-slate-200 text-2xl">
-                                {job.startDate} - {job.endDate ?? "Present"}
-                            </h4>
-
-                            <ul className="flex gap-2 items-center">
-                                {job.technologies?.map((technology) => (
-                                    <li
-                                        key={technology}
-                                        className="text-3xl cursor-pointer"
-                                        title={technology}
-                                    >
-                                        <a href={technologyLinks[technology]}>
-                                            {technologyIcons[technology]}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                            <ul className="text-slate-200 text-2xl drop-shadow-lg space-y-2">
-                                {job.bulletPoints.map((bullet) => (
-                                    <li
-                                        dangerouslySetInnerHTML={{
-                                            __html: "• " + bullet,
-                                        }}
-                                        key={bullet}
-                                    ></li>
-                                ))}
-                            </ul>
-                        </motion.div>
-                    ))}
-                </motion.section>
 
                 <footer id="footer" className="text-slate-200 p-8 mt-24">
                     <div className="flex flex-col items-center space-y-4 drop-shadow-lg">
-                        <h2 className="text-4xl font-semibold">
+                        <h2 className="text-4xl font-semibold text-center">
                             Théo Bourgeois
                         </h2>
                         <p className="text-xl">Software Engineer</p>
@@ -488,15 +476,15 @@ function App() {
                             >
                                 <FaGithub />
                             </a>
-                            <a
+                            {/* <a
                                 href="https://www.youtube.com/c/theobourgeois"
                                 className="text-3xl hover:text-blue-400"
                             >
                                 <FaYoutube />
-                            </a>
+                            </a> */}
                         </div>
 
-                        <p className="text-sm">
+                        <p className="text-sm text-center">
                             &copy; {new Date().getFullYear()} Théo Bourgeois.
                             All rights reserved.
                         </p>

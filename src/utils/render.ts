@@ -120,7 +120,11 @@ export function renderCanvas2(
       ctx.shadowOffsetX = 0;
       ctx.shadowOffsetY = 0;
       ctx.shadowBlur = 10;
-      let alpha = Math.max(j / letters.length, 0.3);
+
+      const normalized = (j / letters.length) * 2 - 1;
+      let alpha = 1 - Math.pow(normalized, 2);
+      alpha = Math.min(Math.max(alpha, 0.1), 0.5)
+
       const isImage = imageArray[i + j * letterList.length] === 1;
       if (isImage) {
         alpha = 0.3;

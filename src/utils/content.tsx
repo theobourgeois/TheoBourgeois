@@ -84,7 +84,7 @@ export const projects: Record<
         color: string;
         image: string[];
         technologies: Technology[];
-        bulletPoints: string[];
+        bulletPoints: React.ReactNode[];
     }
 > = {
     vidgen: {
@@ -107,9 +107,25 @@ export const projects: Record<
             "ffmpeg",
         ],
         bulletPoints: [
-            `<strong>VidGen</strong> is an app that allows users to easily create short-form video content.`,
-            `Built to help <em>content creators</em> streamline the production of short videos.`,
-            `Leverages <strong><a href='${technologyLinks.gcloud}'>Google Cloud Functions</a></strong> and <strong><a href='${technologyLinks.ffmpeg}'>FFmpeg</a></strong> for scalable, efficient video rendering.`,
+            <>
+                <strong>VidGen</strong> is an app that allows users to easily
+                create short-form video content.
+            </>,
+            <>
+                Built to help <em>content creators</em> streamline the
+                production of short videos.
+            </>,
+            <>
+                Leverages{" "}
+                <strong>
+                    <a href={technologyLinks.gcloud}>Google Cloud Functions</a>
+                </strong>{" "}
+                and{" "}
+                <strong>
+                    <a href={technologyLinks.ffmpeg}>FFmpeg</a>
+                </strong>{" "}
+                for scalable, efficient video rendering.
+            </>,
         ],
     },
     trackrack: {
@@ -129,10 +145,39 @@ export const projects: Record<
             "tailwind",
         ],
         bulletPoints: [
-            `<strong>TrackRack</strong> is a <em>digital workspace</em> for real-time music collaboration, allowing users to share, organize, and edit song elements.`,
-            `Tracks are organized by type (stems, demos, etc.) and stored in projects like albums or EPs, helping musicians improve their work through centralized feedback.`,
-            `Built using <strong><a href='${technologyLinks.nextjs}'>NextJS 14</a></strong>, <strong><a href='${technologyLinks.trpc}'>TRPC</a></strong>, and <strong><a href='${technologyLinks.prisma}'>Prisma</a></strong>, with <b><a href="${technologyLinks.uploadthing}">UploadThing</a></b> handling file storage.`,
-            `The app enhances collaboration by offering an ergonomic way to organize and streamline music creation.`,
+            <>
+                <strong>TrackRack</strong> is a <em>digital workspace</em> for
+                real-time music collaboration, allowing users to share,
+                organize, and edit song elements.
+            </>,
+            <>
+                Tracks are organized by type (stems, demos, etc.) and stored in
+                projects like albums or EPs, helping musicians improve their
+                work through centralized feedback.
+            </>,
+            <>
+                Built using{" "}
+                <strong>
+                    <a href={technologyLinks.nextjs}>NextJS 14</a>
+                </strong>
+                ,{" "}
+                <strong>
+                    <a href={technologyLinks.trpc}>TRPC</a>
+                </strong>
+                , and{" "}
+                <strong>
+                    <a href={technologyLinks.prisma}>Prisma</a>
+                </strong>
+                , with{" "}
+                <b>
+                    <a href={technologyLinks.uploadthing}>UploadThing</a>
+                </b>{" "}
+                handling file storage.
+            </>,
+            <>
+                The app enhances collaboration by offering an ergonomic way to
+                organize and streamline music creation.
+            </>,
         ],
     },
     tsynth: {
@@ -145,10 +190,33 @@ export const projects: Record<
         image: ["tsynth.png", "tsynth2.png"],
         technologies: ["react", "ts", "tailwind", "figma"],
         bulletPoints: [
-            `<strong>TSynth</strong> is a <em>digital synthesizer</em> developed for the web, featuring two oscillators, an LFO, an envelope, and a filter.`,
-            `It supports <strong>MIDI device</strong> connectivity, allows session recording and download, and offers multiple themes.`,
-            `Built with <strong><a href='${technologyLinks.react}'>React</a></strong> for the UI and <strong><a href='${technologyLinks.zustand}'>Zustand</a></strong> for state management.`,
-            `Leverages <em><a href='${technologyLinks.js}'>JavaScript Audio Worklets</a></em> for full control over oscillators in the synth engine.`,
+            <>
+                <strong>TSynth</strong> is a <em>digital synthesizer</em>{" "}
+                developed for the web, featuring two oscillators, an LFO, an
+                envelope, and a filter.
+            </>,
+            <>
+                It supports <strong>MIDI device</strong> connectivity, allows
+                session recording and download, and offers multiple themes.
+            </>,
+            <>
+                Built with{" "}
+                <strong>
+                    <a href={technologyLinks.react}>React</a>
+                </strong>{" "}
+                for the UI and{" "}
+                <strong>
+                    <a href={technologyLinks.zustand}>Zustand</a>
+                </strong>{" "}
+                for state management.
+            </>,
+            <>
+                Leverages{" "}
+                <em>
+                    <a href={technologyLinks.js}>JavaScript Audio Worklets</a>
+                </em>{" "}
+                for full control over oscillators in the synth engine.
+            </>,
         ],
     },
 };
@@ -162,7 +230,7 @@ export const experience: Record<
         startDate: string;
         endDate?: string;
         technologies?: Technology[];
-        bulletPoints: string[];
+        bulletPoints: React.ReactNode[];
         website: string;
     }
 > = {
@@ -188,9 +256,28 @@ export const experience: Record<
             "figma",
         ],
         bulletPoints: [
-            `Developed a complete front-end for a state of the art fish counting product using <a href="${technologyLinks.react}">React</a>, <a href="${technologyLinks.ts}">TypeScript</a>, and <a href="${technologyLinks.gql}">GraphQL</a>, enabling a <em>functional</em> and <strong>responsive interface</strong> in a short time.`,
-            `Implemented and tested backend features with <a href="${technologyLinks.spring}">Java Spring Boot</a> and <a href="${technologyLinks.postgresql}">PostgreSQL</a>, ensuring <strong>high reliability</strong> with thorough unit and integration testing.`,
-            `Built a <a href="${technologyLinks.kafka}">Kafka</a> consumer in <a href="${technologyLinks.nodejs}">Node.js</a> using <a href="${technologyLinks.docker}">Docker</a> to route trajectory data to the backend, enabling <em>customized product testing</em>.`,
+            <>
+                Developed a complete front-end for a state of the art fish
+                counting product using <a href={technologyLinks.react}>React</a>
+                , <a href={technologyLinks.ts}>TypeScript</a>, and{" "}
+                <a href={technologyLinks.gql}>GraphQL</a>, enabling a{" "}
+                <em>functional</em> and <strong>responsive interface</strong> in
+                a short time.
+            </>,
+            <>
+                Implemented and tested backend features with{" "}
+                <a href={technologyLinks.spring}>Java Spring Boot</a> and{" "}
+                <a href={technologyLinks.postgresql}>PostgreSQL</a>, ensuring{" "}
+                <strong>high reliability</strong> with thorough unit and
+                integration testing.
+            </>,
+            <>
+                Built a <a href={technologyLinks.kafka}>Kafka</a> consumer in{" "}
+                <a href={technologyLinks.nodejs}>Node.js</a> using{" "}
+                <a href={technologyLinks.docker}>Docker</a> to route trajectory
+                data to the backend, enabling{" "}
+                <em>customized product testing</em>.
+            </>,
         ],
     },
     dalhousie: {
@@ -200,10 +287,20 @@ export const experience: Record<
         website: "https://www.dal.ca/",
         startDate: "September 2024",
         bulletPoints: [
-            `Assessed and graded assignments for an Intro to Web Development course, providing detailed feedback to deepen students' understanding of core concepts.`,
-            `Ensured fair and consistent grading by adhering closely to the course rubric and standards.`,
-            `Tutored students in computer science at Dalhousie University, covering foundational topics like algorithms, data structures, and software development practices in one-on-one sessions.`,
-            `Collaborated with faculty to tailor tutoring sessions based on students' needs, helping them debug code and troubleshoot assignments to enhance problem-solving skills and confidence.`,
+            <>
+                Assessed and graded assignments for an Intro to Web Development
+                course, providing detailed feedback to deepen students'
+                understanding of core concepts.
+            </>,
+            <>
+                Ensured fair and consistent grading by adhering closely to the
+                course rubric and standards.
+            </>,
+            <>
+                Tutored students in computer science at Dalhousie University,
+                covering foundational topics like algorithms, data structures,
+                and software development practices in one-on-one sessions.
+            </>,
         ],
     },
 };
