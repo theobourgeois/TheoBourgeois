@@ -18,7 +18,7 @@ import {
     FaGithub,
     FaLinkedin,
     FaTwitter,
-    FaYoutube,
+    // FaYoutube,
 } from "react-icons/fa";
 import renderCanvas, { useWindowDimensions } from "./utils/custom-hooks";
 
