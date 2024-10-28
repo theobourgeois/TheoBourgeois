@@ -262,21 +262,20 @@ export const experience: Record<
         ],
         bulletPoints: [
             <>
-                Developed a complete front-end for a cutting-edge fish counting
-                product using{" "}
+                Led front-end development of an enterprise-level fish counting
+                application using{" "}
                 <strong>
-                    <a href={technologyLinks.react}>React</a>
-                </strong>
-                ,{" "}
+                    <a href={technologyLinks.react}>React.js</a>
+                </strong>{" "}
+                and{" "}
                 <strong>
                     <a href={technologyLinks.ts}>TypeScript</a>
                 </strong>
-                , and{" "}
+                , implementing responsive design patterns and{" "}
                 <strong>
                     <a href={technologyLinks.gql}>GraphQL</a>
-                </strong>
-                , enabling a functional and responsive interface in a short time
-                frame.
+                </strong>{" "}
+                data integration.
             </>,
             <>
                 Engineered scalable backend solutions utilizing{" "}

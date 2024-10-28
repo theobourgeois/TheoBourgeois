@@ -51,7 +51,7 @@ export default function Home() {
                         ></Image>
                     </ProfilePic>
                     <div>
-                        <h2 className="text-slate-200 text-[44px] md:text-6xl font-bold drop-shadow-lg">
+                        <h2 className="text-slate-200 text-[38px] md:text-6xl font-bold drop-shadow-lg">
                             Hi, my name is Théo!
                         </h2>
                         <h3 className="text-slate-200 text-2xl md:text-3xl drop-shadow-lg">

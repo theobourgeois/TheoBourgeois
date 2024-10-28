@@ -37,11 +37,6 @@ export const metadata: Metadata = {
 
     referrer: "origin-when-cross-origin",
 
-    themeColor: [
-        { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-        { media: "(prefers-color-scheme: dark)", color: "#ffffff" },
-    ],
-
     openGraph: {
         type: "website",
         locale: "en_CA",
@@ -119,13 +114,6 @@ export const metadata: Metadata = {
 
     // For apps/PWA
     manifest: "/manifest.json",
-
-    // Viewport
-    viewport: {
-        width: "device-width",
-        initialScale: 1,
-        maximumScale: 1,
-    },
 };
 
 export default function RootLayout({
