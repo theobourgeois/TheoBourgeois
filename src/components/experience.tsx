@@ -1,5 +1,4 @@
 import { experience, technologyIcons, technologyLinks } from "@/utils/content";
-import { useTheme } from "@/utils/state";
 import Image from "next/image";
 import Link from "next/link";
 import ExperienceWrapper from "./experience-wrapper";
