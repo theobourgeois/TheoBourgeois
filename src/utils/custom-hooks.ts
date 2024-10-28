@@ -6,26 +6,27 @@ type Dimensions = {
   height: number;
 };
 
+
 export function useWindowDimensions() {
   const [dimensions, setDimensions] = useState<Dimensions>({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: window?.innerWidth,
+    height: window?.innerHeight,
   });
 
   useEffect(() => {
     const handleSetDimensions = () => {
       const sidebar = document.getElementById("sidebar");
-      const isMobile = window.innerWidth < 768;
+      const isMobile = window?.innerWidth < 768;
 
       setDimensions({
-        width: window.innerWidth - (!isMobile ? sidebar?.clientWidth ?? 0 : 0),
-        height: window.innerHeight,
+        width: window?.innerWidth - (!isMobile ? sidebar?.clientWidth ?? 0 : 0),
+        height: window?.innerHeight,
       });
     };
     handleSetDimensions();
-    window.addEventListener("resize", handleSetDimensions);
+    window?.addEventListener("resize", handleSetDimensions);
     return () => {
-      window.removeEventListener("resize", handleSetDimensions);
+      window?.removeEventListener("resize", handleSetDimensions);
     };
   }, []);
 
