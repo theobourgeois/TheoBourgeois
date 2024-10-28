@@ -8,32 +8,35 @@ type Dimensions = {
 
 
 export function useWindowDimensions() {
+  // Initial state with default values (since window is not available on the server)
   const [dimensions, setDimensions] = useState<Dimensions>({
-    width: window?.innerWidth,
-    height: window?.innerHeight,
+    width: 0,
+    height: 0,
   });
 
   useEffect(() => {
     const handleSetDimensions = () => {
       const sidebar = document.getElementById("sidebar");
-      const isMobile = window?.innerWidth < 768;
+      const isMobile = window.innerWidth < 768;
 
       setDimensions({
-        width: window?.innerWidth - (!isMobile ? sidebar?.clientWidth ?? 0 : 0),
-        height: window?.innerHeight,
+        width: window.innerWidth - (!isMobile ? sidebar?.clientWidth ?? 0 : 0),
+        height: window.innerHeight,
       });
     };
+
+    // Set initial dimensions on client-side only
     handleSetDimensions();
-    window?.addEventListener("resize", handleSetDimensions);
-    return () => {
-      window?.removeEventListener("resize", handleSetDimensions);
-    };
+
+    // Add resize event listener
+    window.addEventListener("resize", handleSetDimensions);
+    return () => window.removeEventListener("resize", handleSetDimensions);
   }, []);
 
   return {
     ...dimensions,
     isMobile: dimensions.width < 768,
-  }
+  };
 }
 
 
