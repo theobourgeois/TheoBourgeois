@@ -99,7 +99,7 @@ export const metadata: Metadata = {
 
     // Verification for search console
     verification: {
-        google: "your-google-site-verification", // Add your Google verification code
+        google: process.env.GOOGLE_VERIFICATION, // Add your Google verification code
         //yandex: "yandex-verification",
         //yahoo: "yahoo-verification",
     },

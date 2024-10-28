@@ -40,7 +40,6 @@ export function getImageArrayFromText(
   if (width === 0 || height === 0) {
     return [];
   }
-  console.log(width, height);
 
   const canvas = document.createElement("canvas");
   canvas.width = width;

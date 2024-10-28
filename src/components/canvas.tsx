@@ -73,7 +73,7 @@ export default function Canvas3(props: CanvasProps) {
         dimensions.width,
         dimensions.height,
         [theme, dimensions, dimensions.isMobile],
-        dimensions.isMobile ? 10000 : 200
+        dimensions.isMobile ? 10000 : 100
     );
 
     return <canvas className={props.className} ref={ref}></canvas>;
