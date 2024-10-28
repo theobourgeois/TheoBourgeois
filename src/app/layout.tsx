@@ -13,12 +13,13 @@ export const metadata: Metadata = {
     metadataBase: new URL("https://theobourgeois.com"),
     title: "Théo Bourgeois - Software Engineer in Halifax",
     description:
-        "Experienced Software Engineer based in Halifax, Nova Scotia, specializing in React, TypeScript, and full-stack development. Building innovative web applications with modern technologies like Next.js, GraphQL, and cloud solutions.",
+        "Software Engineer based in Halifax, Nova Scotia, specializing in React, TypeScript, and full-stack development. Building innovative web applications with modern technologies like Next.js, GraphQL, and cloud solutions.",
 
     keywords: [
         "Software Engineer",
         "Web Developer",
         "React Developer",
+        "Dalhousie University",
         "Halifax",
         "Nova Scotia",
         "TypeScript",

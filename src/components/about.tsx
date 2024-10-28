@@ -8,7 +8,7 @@ export default function About() {
                 <h2 className="text-slate-200 text-5xl md:text-7xl sm:text-6xl text-center drop-shadow-lg font-bold">
                     About me
                 </h2>
-                <h3 className="text-slate-200 text-[5vw] md:text-3xl text-center drop-shadow-lg ">
+                <h3 className="text-slate-200 text-[2vw] md:text-3xl text-center drop-shadow-lg">
                     I am a passionate developer dedicated to creating{" "}
                     <strong>innovative and creative projects</strong>. My
                     enthusiasm for learning new technologies drives me to build
@@ -22,7 +22,7 @@ export default function About() {
                     , where I am honing my skills and expanding my knowledge
                     base.
                 </h3>
-                <h3 className="text-slate-200 text-[5vw] md:text-3xl text-center drop-shadow-lg ">
+                <h3 className="text-slate-200 text-[2vw] md:text-3xl text-center drop-shadow-lg ">
                     I thrive on new challenges and actively seek opportunities
                     to grow both personally and professionally. Whether
                     it&apos;s through collaborative projects, internships, or
