@@ -37,6 +37,11 @@ export function getImageArrayFromText(
   height: number,
   font: Font
 ) {
+  if (width === 0 || height === 0) {
+    return [];
+  }
+  console.log(width, height);
+
   const canvas = document.createElement("canvas");
   canvas.width = width;
   canvas.height = height;
@@ -74,6 +79,7 @@ export function getImageArrayFromText(
       imageArray.push(0);
     }
   }
+
   return imageArray;
 }
 
@@ -97,8 +103,8 @@ export const renderCodeCanvas = (
   const textHeight = textMetrics.actualBoundingBoxAscent + offsetHeight;
   const textWidth = textMetrics.width;
 
-  const charsPerLine = Math.floor(width / textWidth);
-  const numOfLines = Math.floor(height / textHeight);
+  const charsPerLine = Math.floor(width / textWidth) || 0;
+  const numOfLines = Math.floor(height / textHeight) || 0;
   const totalNumOfChars = charsPerLine * numOfLines;
   const imageArray = getImageArrayFromText(
     text,
