@@ -187,6 +187,33 @@ export const projects: Record<
             </>,
         ],
     },
+    tgames: {
+        color: "#3272D0",
+        title: "TGames",
+        description: "Games made to teach coding, music concepts and more",
+        github: "https://github.com/theobourgeois/TGames",
+        image: ["/tgames.png", "/tgames2.png"],
+        technologies: ["react", "ts", "tailwind", "nextjs"],
+        website: "https://tgames.theobourgeois.com/",
+        bulletPoints: [
+            <>
+                <strong>TGames</strong> is a game platform showcasing
+                interactive educational and technology-focused games, designed
+                to make learning engaging and fun.
+            </>,
+            <>
+                My collection of <strong>interactive games</strong> spans across
+                technology, music, and education, providing users with hands-on
+                learning experiences through gamification.
+            </>,
+            <>
+                Each game is thoughtfully crafted to blend{" "}
+                <strong>educational content</strong> with entertaining gameplay
+                mechanics, making complex concepts accessible and enjoyable for
+                players of all skill levels.
+            </>,
+        ],
+    },
     tsynth: {
         color: "#24334D",
         title: "TSynth",
@@ -221,33 +248,6 @@ export const projects: Record<
                 Leverages <strong>JavaScript Audio Worklets</strong> to provide
                 full control over oscillators within the synth engine, enhancing
                 audio manipulation.
-            </>,
-        ],
-    },
-    tgames: {
-        color: "#3272D0",
-        title: "TGames",
-        description: "Games made to teach coding, music concepts and more",
-        github: "https://github.com/theobourgeois/TGames",
-        image: ["/tgames.png", "/tgames2.png"],
-        technologies: ["react", "ts", "tailwind", "nextjs"],
-        website: "https://tgames.theobourgeois.com/",
-        bulletPoints: [
-            <>
-                <strong>TGames</strong> is a game platform showcasing
-                interactive educational and technology-focused games, designed
-                to make learning engaging and fun.
-            </>,
-            <>
-                My collection of <strong>interactive games</strong> spans across
-                technology, music, and education, providing users with hands-on
-                learning experiences through gamification.
-            </>,
-            <>
-                Each game is thoughtfully crafted to blend{" "}
-                <strong>educational content</strong> with entertaining gameplay
-                mechanics, making complex concepts accessible and enjoyable for
-                players of all skill levels.
             </>,
         ],
     },
