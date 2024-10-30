@@ -234,31 +234,20 @@ export const projects: Record<
         website: "https://tgames.theobourgeois.com/",
         bulletPoints: [
             <>
-                <strong>TGames</strong> is an innovative game platform
-                showcasing interactive educational and technology-focused games,
-                designed to make learning engaging and fun.
+                <strong>TGames</strong> is a game platform showcasing
+                interactive educational and technology-focused games, designed
+                to make learning engaging and fun.
             </>,
             <>
-                Our collection of <strong>interactive games</strong> spans
-                across technology, music, and education, providing users with
-                hands-on learning experiences through gamification.
-            </>,
-            <>
-                Built using <strong>modern web technologies</strong> to ensure
-                smooth performance and engaging user experience across all
-                devices, making learning accessible anywhere.
+                My collection of <strong>interactive games</strong> spans across
+                technology, music, and education, providing users with hands-on
+                learning experiences through gamification.
             </>,
             <>
                 Each game is thoughtfully crafted to blend{" "}
                 <strong>educational content</strong> with entertaining gameplay
                 mechanics, making complex concepts accessible and enjoyable for
                 players of all skill levels.
-            </>,
-            <>
-                TGames enhances learning through{" "}
-                <strong>interactive gameplay</strong>, offering a unique
-                approach to understanding technology, music theory, and
-                educational concepts through practical, hands-on challenges.
             </>,
         ],
     },
