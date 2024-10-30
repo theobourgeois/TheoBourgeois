@@ -8,13 +8,13 @@ import Canvas3 from "./canvas";
 export default function Projects() {
     return (
         <section id="projects" className="flex flex-col gap-8 relative h-full">
-            <Canvas3 className="hidden sm:block w-full h-[25%] -top-[440px] lg:h-[28%] lg:-top-[100px] sm:-top-[300px] md:-top-[200px] absolute"></Canvas3>
-            <div className="hidden sm:block w-full relative h-[100px] md:h-[200px] lg:h-[600px]"></div>
+            <Canvas3 className="hidden lg:block w-full h-[25%] -top-[440px] lg:h-[20%] lg:-top-[100px] sm:-top-[300px] md:-top-[200px] absolute"></Canvas3>
+            <div className="hidden lg:block w-full relative h-[100px] md:h-[200px] lg:h-[600px]"></div>
             <h2
                 style={{
                     textShadow: "0 0 10px #ffffff90",
                 }}
-                className="text-slate-200 block sm:hidden font-bold text-center text-[13vw] md:text-9xl drop-shadow-lg mb-4"
+                className="text-slate-200 block lg:hidden font-bold text-center text-[13vw] md:text-9xl drop-shadow-lg mb-4"
             >
                 My Projects
             </h2>
