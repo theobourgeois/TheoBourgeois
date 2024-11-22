@@ -6,8 +6,6 @@ type Dimensions = {
   height: number;
 };
 
-const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 export function useWindowDimensions() {
   // Initial state with default values (since window is not available on the server)
@@ -66,6 +64,8 @@ export const renderCanvas = (
     let lastRenderTime = 0;
     renderFunction(ctx, width, height);
 
+    const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+    const isMobile = /Mobi|Android/i.test(navigator.userAgent);
     if (!isFirefox && !isMobile) {
       const renderLoop = (time: number) => {
         // Throttle rendering to run every `throttleMs` milliseconds
