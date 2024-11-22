@@ -6,6 +6,8 @@ type Dimensions = {
   height: number;
 };
 
+const isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 export function useWindowDimensions() {
   // Initial state with default values (since window is not available on the server)
@@ -64,22 +66,24 @@ export const renderCanvas = (
     let lastRenderTime = 0;
     renderFunction(ctx, width, height);
 
-    const renderLoop = (time: number) => {
-      // Throttle rendering to run every `throttleMs` milliseconds
-      if (time - lastRenderTime >= throttleMs) {
-        lastRenderTime = time;
-        renderFunction(ctx, width, height);
-      }
+    if (!isFirefox && !isMobile) {
+      const renderLoop = (time: number) => {
+        // Throttle rendering to run every `throttleMs` milliseconds
+        if (time - lastRenderTime >= throttleMs) {
+          lastRenderTime = time;
+          renderFunction(ctx, width, height);
+        }
 
-      // Request the next frame
+        // Request the next frame
+        animationFrameId = requestAnimationFrame(renderLoop);
+      };
+
+      // Start the render loop
       animationFrameId = requestAnimationFrame(renderLoop);
-    };
 
-    // Start the render loop
-    animationFrameId = requestAnimationFrame(renderLoop);
-
-    // Cleanup on unmount
-    return () => cancelAnimationFrame(animationFrameId);
+      // Cleanup on unmount
+      return () => cancelAnimationFrame(animationFrameId);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, dependencies);
