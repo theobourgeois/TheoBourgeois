@@ -19,15 +19,8 @@
     scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background: rgb(2 6 23);
-        --foreground: #ededed;
-    }
-}
-
 body {
-    color: var(--foreground);
-    background-color: var(--background);
+    color: #ededed;
+    background-color: rgb(2 6 23);
     font-family: var(--font-poppins);
 }
