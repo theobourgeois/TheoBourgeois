@@ -90,7 +90,7 @@ export const projects: Record<
     }
 > = {
     dalsearch: {
-        color: "#24334D",
+        color: "#d49e0b",
         title: "DalSearch",
         description:
             "A video generator that creates a video from a list of images.",
