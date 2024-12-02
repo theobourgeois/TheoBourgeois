@@ -106,8 +106,10 @@ export const projects: Record<
             </>,
             <>
                 Gathered data from mutliple sources, including{" "}
-                <a href="https://dal.ca">Dalhousie University</a>{" "}
-                <a href="https://ratemyprofessors.com">Rate my Professors</a>{" "}
+                <a href="https://dal.ca">Dalhousie University</a> and
+                <a href="https://ratemyprofessors.com">
+                    Rate my Professors
+                </a>{" "}
                 using a{" "}
                 <a href={technologyLinks.nodejs}>
                     <b>NodeJs</b>
@@ -116,8 +118,7 @@ export const projects: Record<
                 <a href={technologyLinks.python}>
                     <b>Python</b>
                 </a>{" "}
-                web scraper, and stored it in a JSON file for easy access and
-                search.
+                web scraper pipeline.
             </>,
             <>
                 Built with{" "}
