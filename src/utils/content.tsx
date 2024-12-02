@@ -94,7 +94,7 @@ export const projects: Record<
         title: "DalSearch",
         description:
             "A video generator that creates a video from a list of images.",
-        website: "https://dalsearch.app/",
+        website: "https://dalsearch.com/",
         github: "https://github.com/theobourgeois/DalSearch",
         image: ["/dalsearch1.png", "/dalsearch2.png", "/dalsearch3.png"],
         technologies: ["nextjs", "nodejs", "react", "python", "ts", "tailwind"],
