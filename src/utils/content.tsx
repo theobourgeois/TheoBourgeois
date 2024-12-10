@@ -89,6 +89,43 @@ export const projects: Record<
         bulletPoints: React.ReactNode[];
     }
 > = {
+    tsynth: {
+        color: "#24334D",
+        title: "TSynth",
+        description:
+            "A video generator that creates a video from a list of images.",
+        website: "https://tsynth.netlify.app/",
+        github: "https://github.com/theobourgeois/TSynth",
+        image: ["/tsynth.png", "/tsynth2.png"],
+        technologies: ["react", "ts", "tailwind", "figma"],
+        bulletPoints: [
+            <>
+                <strong>TSynth</strong> is a web-based digital synthesizer that
+                features two oscillators, an LFO, an envelope, and a filter for
+                diverse sound design.
+            </>,
+            <>
+                It supports MIDI device connectivity, session recording, and
+                download capabilities, along with multiple customizable themes.
+            </>,
+            <>
+                Built with{" "}
+                <strong>
+                    <a href={technologyLinks.react}>React</a>
+                </strong>{" "}
+                for the user interface and{" "}
+                <strong>
+                    <a href={technologyLinks.zustand}>Zustand</a>
+                </strong>{" "}
+                for state management, ensuring a smooth user experience.
+            </>,
+            <>
+                Leverages <strong>JavaScript Audio Worklets</strong> to provide
+                full control over oscillators within the synth engine, enhancing
+                audio manipulation.
+            </>,
+        ],
+    },
     dalsearch: {
         color: "#d49e0b",
         title: "DalSearch",
@@ -106,10 +143,8 @@ export const projects: Record<
             </>,
             <>
                 Gathered data from mutliple sources, including{" "}
-                <a href="https://dal.ca">Dalhousie University</a> and
-                <a href="https://ratemyprofessors.com">
-                    Rate my Professors
-                </a>{" "}
+                <a href="https://dal.ca">Dalhousie University</a> and{" "}
+                <a href="https://ratemyprofessors.com">Rate my Professors</a>{" "}
                 using a{" "}
                 <a href={technologyLinks.nodejs}>
                     <b>NodeJs</b>
@@ -257,43 +292,6 @@ export const projects: Record<
                 <strong>educational content</strong> with entertaining gameplay
                 mechanics, making complex concepts accessible and enjoyable for
                 players of all skill levels.
-            </>,
-        ],
-    },
-    tsynth: {
-        color: "#24334D",
-        title: "TSynth",
-        description:
-            "A video generator that creates a video from a list of images.",
-        website: "https://tsynth.netlify.app/",
-        github: "https://github.com/theobourgeois/TSynth",
-        image: ["/tsynth.png", "/tsynth2.png"],
-        technologies: ["react", "ts", "tailwind", "figma"],
-        bulletPoints: [
-            <>
-                <strong>TSynth</strong> is a web-based digital synthesizer that
-                features two oscillators, an LFO, an envelope, and a filter for
-                diverse sound design.
-            </>,
-            <>
-                It supports MIDI device connectivity, session recording, and
-                download capabilities, along with multiple customizable themes.
-            </>,
-            <>
-                Built with{" "}
-                <strong>
-                    <a href={technologyLinks.react}>React</a>
-                </strong>{" "}
-                for the user interface and{" "}
-                <strong>
-                    <a href={technologyLinks.zustand}>Zustand</a>
-                </strong>{" "}
-                for state management, ensuring a smooth user experience.
-            </>,
-            <>
-                Leverages <strong>JavaScript Audio Worklets</strong> to provide
-                full control over oscillators within the synth engine, enhancing
-                audio manipulation.
             </>,
         ],
     },
