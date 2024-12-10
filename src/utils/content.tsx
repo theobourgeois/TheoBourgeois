@@ -142,7 +142,7 @@ export const projects: Record<
                 course schedules, professors and more.
             </>,
             <>
-                Gathered data from mutliple sources, including{" "}
+                Gathered data from multiple sources, including{" "}
                 <a href="https://dal.ca">Dalhousie University</a> and{" "}
                 <a href="https://ratemyprofessors.com">Rate my Professors</a>{" "}
                 using a{" "}
