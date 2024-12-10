@@ -138,8 +138,8 @@ export const projects: Record<
         bulletPoints: [
             <>
                 <strong>DalSearch</strong> a web-based search tool that allows
-                students to search for courses and retreive information about
-                course shedules, professors and more.
+                students to search for courses and retrieve information about
+                course schedules, professors and more.
             </>,
             <>
                 Gathered data from mutliple sources, including{" "}
