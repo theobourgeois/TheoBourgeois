@@ -17,12 +17,12 @@ export default function Home() {
             <header className="p-4 flex flex-col gap-24 h-screen">
                 <div className="flex justify-between z-20">
                     <div className="flex flex-col gap-4">
-                        <h1 className="text-white text-7xl font-semibold">
+                        <h1 className="text-white text-2xl sm:text-7xl font-semibold">
                             <Link className="hover:no-underline" href="/">
                                 Théo Bourgeois
                             </Link>
                         </h1>
-                        <nav className="flex items-center space-x-2 md:space-x-4 font-medium">
+                        <nav className="sm:flex items-center space-x-2 md:space-x-4 font-medium hidden">
                             <Link href="#about" className="text-white">
                                 About me
                             </Link>
@@ -40,7 +40,7 @@ export default function Home() {
                     <ThemeButton />
                 </div>
 
-                <section className="w-3/4 mx-auto space-y-4">
+                <section className="w-full md:w-3/4 mx-auto space-y-4">
                     <ProfilePic>
                         <Image
                             width={500}
@@ -51,12 +51,12 @@ export default function Home() {
                         ></Image>
                     </ProfilePic>
                     <div>
-                        <h2 className="text-slate-200 text-[38px] md:text-6xl font-bold drop-shadow-lg">
+                        <h2 className="text-slate-200 text-[30px] md:text-6xl font-bold drop-shadow-lg">
                             Hi, my name is Théo!
                         </h2>
-                        <h3 className="text-slate-200 text-2xl md:text-3xl drop-shadow-lg">
-                            I&apos;m a <b>Fullstack Software Engineer</b> based
-                            in <b>Halifax Nova Scotia, Canada</b>
+                        <h3 className="text-slate-200 text-xl md:text-3xl drop-shadow-lg">
+                            I&apos;m a <b>Software Engineer</b> based in{" "}
+                            <b>Halifax Nova Scotia, Canada</b>
                         </h3>
                     </div>
                     <div className="mt-12 mx-auto w-full flex justify-center">
